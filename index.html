@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taj Jewellers — Est. 1997 · Darbhanga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+  :root {
+    --gold: #D4A574;
+    --gold-light: #E8C4A0;
+    --gold-dim: #9B7E5C;
+    --black: #0F1419;
+    --dark: #151A22;
+    --dark2: #1C2331;
+    --dark3: #242D3D;
+    --cream: #F5F1E8;
+    --cream-dim: #C9BDB5;
+    --text: #D4C4A0;
+    --emerald: #1F4D3D;
+    --emerald-light: #2A6B55;
+    --emerald-dark: #0D2A22;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--text);font-family:'Raleway',sans-serif;overflow-x:hidden;}
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:var(--dark);}
+  ::-webkit-scrollbar-thumb{background:var(--gold-dim);}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:linear-gradient(90deg, rgba(15,20,25,0.96) 0%, rgba(31,77,61,0.06) 100%);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,165,116,0.2);transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+  .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+  .nav-logo-svg{filter:drop-shadow(0 0 8px rgba(212,165,116,0.4));transition:all .3s;}
+  .nav-logo:hover .nav-logo-svg{filter:drop-shadow(0 0 16px rgba(212,165,116,0.7));transform:scale(1.08);}
+  .nav-brand{font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--cream);letter-spacing:3px;line-height:1.2;}
+  .nav-brand small{display:block;font-size:9px;letter-spacing:4px;color:var(--gold);font-weight:400;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{text-decoration:none;font-size:11px;letter-spacing:2.5px;color:var(--cream-dim);transition:color .3s;font-weight:500;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--black)!important;padding:10px 20px;letter-spacing:2px!important;font-weight:600!important;transition:all .3s!important;}
+  .nav-cta:hover{background:var(--gold-light)!important;transform:translateY(-1px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .hamburger span{width:24px;height:1.5px;background:var(--gold);transition:all .3s;}
+
+  /* ===== TICKER ===== */
+  .ticker{background:linear-gradient(90deg, #1F4D3D 0%, #2A6B55 50%, #1F4D3D 100%);padding:10px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-flex;animation:ticker 25s linear infinite;}
+  .ticker-inner span{padding:0 40px;font-size:10px;letter-spacing:3px;color:var(--black);font-weight:600;font-family:'Cinzel',serif;}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== HERO ===== */
+  #home{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg, #0D2A22 0%, #0F1419 50%, #0D2A22 100%);}
+  .hero-bg-ornament{position:absolute;inset:0;pointer-events:none;}
+  .hero-bg-ornament::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border:1px solid rgba(212,165,116,0.05);border-radius:50%;}
+  .hero-bg-ornament::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:550px;height:550px;border:1px solid rgba(212,165,116,0.08);border-radius:50%;}
+  .hero-leaves{position:absolute;top:100px;left:60px;opacity:.25;}
+  .hero-leaves-r{position:absolute;bottom:120px;right:60px;opacity:.25;transform:scaleX(-1);}
+  .hero-content{text-align:center;z-index:2;padding:0 20px;animation:fadeUp .8s ease both;}
+  .hero-est{font-size:10px;letter-spacing:8px;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:16px;justify-content:center;}
+  .hero-est::before,.hero-est::after{content:'';width:50px;height:1px;background:var(--gold-dim);}
+  .hero-title-main{font-family:'Cinzel',serif;font-size:clamp(72px,12vw,140px);font-weight:700;color:var(--cream);line-height:.9;letter-spacing:8px;}
+  .hero-title-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,9vw,110px);font-style:italic;font-weight:300;color:var(--gold);line-height:1;}
+  .hero-desc{font-size:14px;color:var(--cream-dim);max-width:520px;margin:28px auto;line-height:1.9;letter-spacing:.5px;font-weight:300;}
+  .hero-btns{display:flex;gap:20px;justify-content:center;margin-top:40px;}
+  .btn-primary{background:linear-gradient(135deg, #2A6B55, #1F4D3D);color:#F5F1E8;padding:16px 36px;font-size:10px;letter-spacing:3px;font-family:'Cinzel',serif;font-weight:600;border:none;cursor:pointer;transition:all .4s cubic-bezier(0.23, 1, 0.320, 1);text-decoration:none;display:inline-block;box-shadow:0 8px 24px rgba(212,165,116,.35),inset 0 1px 0 rgba(255,255,255,.15);}
+  .btn-primary:hover{background:linear-gradient(135deg, var(--gold-light), var(--gold));transform:translateY(-4px);box-shadow:0 16px 36px rgba(212,165,116,.5),inset 0 1px 0 rgba(255,255,255,.2);}
+  .btn-outline{border:2px solid var(--gold);color:var(--gold);padding:16px 36px;font-size:10px;letter-spacing:3px;font-family:'Cinzel',serif;font-weight:600;background:transparent;cursor:pointer;transition:all .4s cubic-bezier(0.23, 1, 0.320, 1);text-decoration:none;display:inline-block;box-shadow:0 0 12px rgba(212,165,116,.2);}
+  .btn-outline:hover{background:rgba(212,165,116,.12);transform:translateY(-4px);box-shadow:0 12px 28px rgba(212,165,116,.35);border-color:var(--gold-light);color:var(--gold-light);}
+  .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);text-align:center;animation:bounce 2s ease infinite;}
+  .hero-scroll span{display:block;font-size:9px;letter-spacing:4px;color:var(--gold-dim);margin-bottom:10px;}
+  .scroll-mouse{width:22px;height:36px;border:1px solid var(--gold-dim);border-radius:11px;margin:0 auto;position:relative;}
+  .scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:var(--gold);border-radius:1px;animation:scrollDot 2s ease infinite;}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+  @keyframes scrollDot{0%{opacity:1;top:6px}100%{opacity:0;top:20px}}
+
+  /* ===== STATS ===== */
+  .stats-bar{background:linear-gradient(90deg, rgba(13,42,34,0.9) 0%, rgba(31,77,61,.5) 50%, rgba(13,42,34,0.9) 100%);padding:40px 60px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(212,165,116,0.15);border-bottom:1px solid rgba(212,165,116,0.15);backdrop-filter:blur(10px);box-shadow:inset 0 0 30px rgba(212,165,116,.06);}
+  .stat-item{text-align:center;padding:20px;}
+  .stat-item:not(:last-child){border-right:1px solid rgba(212,165,116,0.12);}
+  .stat-num{font-family:'Cinzel',serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--gold);display:block;}
+  .stat-label{font-size:9px;letter-spacing:4px;color:var(--cream-dim);margin-top:8px;display:block;}
+
+  /* ===== SECTION COMMON ===== */
+  section{padding:100px 60px;}
+  .section-label{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,62px);font-weight:300;color:var(--cream);line-height:1.15;}
+  .section-title em{font-style:italic;color:var(--gold);}
+  .divider{display:flex;align-items:center;gap:16px;margin:20px 0 40px;max-width:300px;}
+  .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--gold-dim);}
+  .divider-star{color:var(--gold);font-size:14px;}
+  .section-desc{font-size:14px;color:var(--cream-dim);line-height:1.9;max-width:600px;font-weight:300;}
+
+  /* ===== COLLECTIONS ===== */
+  #collections{background:linear-gradient(180deg, #151A22 0%, #0D2A22 100%);}
+  .collections-header{text-align:center;margin-bottom:60px;}
+  .collections-header .divider{margin:20px auto 40px;}
+  .filter-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:50px;flex-wrap:wrap;}
+  .filter-tab{padding:10px 24px;font-size:10px;letter-spacing:2.5px;font-family:'Cinzel',serif;background:transparent;border:1px solid rgba(212,165,116,0.25);color:var(--cream-dim);cursor:pointer;transition:all .3s;}
+  .filter-tab.active{background:var(--gold);color:var(--black);border-color:var(--gold);}
+  .filter-tab:hover:not(.active){border-color:var(--gold);color:var(--gold);}
+  .jewellery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:1400px;margin:0 auto;}
+  .jewel-card{position:relative;overflow:hidden;cursor:pointer;background:var(--dark2);border:1px solid rgba(212,165,116,.12);transition:all .5s cubic-bezier(0.23, 1, 0.320, 1);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+  .jewel-card:hover{transform:translateY(-12px);box-shadow:0 20px 40px rgba(212,165,116,.25),inset 0 0 20px rgba(212,165,116,.08);border-color:rgba(212,165,116,.35);}
+  .jewel-img-wrap{aspect-ratio:3/4;overflow:hidden;position:relative;background:linear-gradient(135deg, rgba(212,165,116,.1) 0%, transparent 100%);}
+  .jewel-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:brightness(0.85);}
+  .jewel-card:hover .jewel-img-wrap img{transform:scale(1.12);filter:brightness(1);}
+  .jewel-badge{position:absolute;top:16px;left:16px;background:linear-gradient(135deg, #2A6B55, #1F4D3D);color:#F5F1E8;font-size:8px;letter-spacing:2px;padding:6px 14px;font-family:'Cinzel',serif;font-weight:600;box-shadow:0 4px 12px rgba(212,165,116,.3);}
+  .jewel-info{padding:24px;background:linear-gradient(180deg, rgba(26,21,16,1) 0%, rgba(17,14,9,1) 100%);}
+  .jewel-category{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:8px;text-transform:uppercase;font-weight:600;}
+  .jewel-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:16px;font-weight:400;}
+  .jewel-footer{display:flex;align-items:center;justify-content:space-between;}
+  .jewel-price{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);font-weight:600;}
+  .enquire-btn{background:transparent;border:1.5px solid var(--gold);color:var(--gold);padding:8px 18px;font-size:9px;letter-spacing:2px;cursor:pointer;font-family:'Cinzel',serif;transition:all .3s;box-shadow:0 0 0 0 rgba(212,165,116,.3);}
+  .enquire-btn:hover{background:var(--gold);color:var(--black);box-shadow:0 0 12px rgba(212,165,116,.5);transform:scale(1.05);}
+  .no-items-msg{grid-column:1/-1;text-align:center;padding:80px;color:var(--cream-dim);font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;}
+
+  /* ===== DESIGNS ===== */
+  #designs{background:linear-gradient(180deg, #0A0806 0%, #110E09 50%, #0A0806 100%);}
+  .designs-intro{text-align:center;margin-bottom:70px;}
+  .designs-intro .divider{margin:20px auto 30px;}
+  .designs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto;}
+  .design-card{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;transition:all .5s ease;box-shadow:0 12px 40px rgba(0,0,0,.4),inset 0 0 0 1px rgba(212,165,116,.1);}
+  .design-card:hover{transform:translateY(-16px);box-shadow:0 24px 60px rgba(212,165,116,.3),inset 0 0 30px rgba(212,165,116,.12);}
+  .design-card img{width:100%;height:420px;object-fit:cover;transition:transform .8s cubic-bezier(0.23, 1, 0.320, 1);filter:brightness(0.85);}
+  .design-card:hover img{transform:scale(1.1);filter:brightness(1);}
+  .design-overlay{position:absolute;bottom:0;left:0;right:0;padding:30px 24px;background:linear-gradient(to top, rgba(10,8,6,.98) 0%, rgba(10,8,6,.85) 50%, transparent 100%);backdrop-filter:blur(4px);}
+  .design-line{font-size:9px;letter-spacing:3px;color:var(--gold);}
+  .design-name{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);font-weight:300;margin-top:8px;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+
+  /* ===== GOLD LOAN ===== */
+  #gold-loan{background:linear-gradient(180deg, #1F4D3D 0%, #151A22 100%);}
+  .loan-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .loan-badge{display:inline-block;background:linear-gradient(135deg, #2A6B55, #1F4D3D);color:#F5F1E8;padding:20px 28px;font-family:'Cinzel',serif;margin-bottom:30px;box-shadow:0 8px 24px rgba(212,165,116,.4);}
+  .loan-badge .rate{font-size:48px;font-weight:700;line-height:1;}
+  .loan-badge .rate-sub{font-size:11px;letter-spacing:3px;margin-top:4px;font-weight:600;}
+  .loan-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,54px);color:var(--cream);line-height:1.2;margin-bottom:20px;}
+  .loan-title em{color:var(--gold);font-style:italic;}
+  .loan-desc{font-size:14px;color:var(--cream-dim);line-height:1.9;margin-bottom:36px;font-weight:300;}
+  .loan-features{list-style:none;margin-bottom:36px;}
+  .loan-features li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(212,165,116,0.1);font-size:13px;color:var(--cream-dim);}
+  .loan-features li::before{content:'◆';color:var(--gold);font-size:8px;flex-shrink:0;}
+  .loan-img-wrap{position:relative;}
+  .loan-img-wrap img{width:100%;height:550px;object-fit:cover;filter:brightness(.8);}
+  .loan-img-tag{position:absolute;bottom:30px;left:-20px;background:var(--dark2);padding:20px 28px;border-left:3px solid var(--gold);}
+  .loan-img-tag strong{display:block;font-family:'Cinzel',serif;font-size:18px;color:var(--gold);}
+  .loan-img-tag span{font-size:9px;letter-spacing:3px;color:var(--cream-dim);}
+
+  /* ===== ABOUT ===== */
+  #about{background:linear-gradient(180deg, #0D2A22 0%, #1C2331 100%);}
+  .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .about-img-stack{position:relative;height:600px;}
+  .about-img-main{width:75%;height:480px;object-fit:cover;position:absolute;top:0;right:0;}
+  .about-img-year{position:absolute;bottom:0;left:0;background:var(--gold);padding:28px 32px;font-family:'Cinzel',serif;}
+  .about-img-year .yr{font-size:52px;font-weight:700;color:var(--black);line-height:1;}
+  .about-img-year .yr-sub{font-size:9px;letter-spacing:4px;color:rgba(0,0,0,.7);}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;}
+  .fact-item{padding:20px;border:1px solid rgba(212,165,116,0.15);}
+  .fact-label{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:8px;}
+  .fact-val{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);}
+
+  /* ===== APPOINTMENT FORM ===== */
+  #contact{background:linear-gradient(180deg, #1F4D3D 0%, #0F1419 100%);}
+  .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
+  .contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,54px);color:var(--cream);line-height:1.2;margin-bottom:24px;}
+  .contact-info h2 em{color:var(--gold);font-style:italic;}
+  .contact-info p{font-size:14px;color:var(--cream-dim);line-height:1.9;font-weight:300;margin-bottom:40px;}
+  .contact-detail{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .contact-icon{width:40px;height:40px;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;flex-shrink:0;}
+  .contact-detail-text strong{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:var(--cream);}
+  .contact-detail-text span{font-size:13px;color:var(--cream-dim);}
+  .contact-form{background:linear-gradient(135deg, rgba(31,77,61,0.6) 0%, rgba(15,20,25,0.8) 100%);padding:48px;border:1px solid rgba(212,165,116,0.15);backdrop-filter:blur(10px);box-shadow:inset 0 0 20px rgba(212,165,116,.05);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;background:transparent;border:1.5px solid rgba(212,165,116,.15);color:var(--cream);padding:14px 18px;font-family:'Raleway',sans-serif;font-size:13px;transition:all .3s;outline:none;border-radius:2px;}
+  .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(212,196,160,0.3);}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(212,165,116,.05);box-shadow:0 0 16px rgba(212,165,116,.2),inset 0 0 8px rgba(212,165,116,.05);}
+  .form-group select{appearance:none;cursor:pointer;}
+  .form-group select option{background:var(--dark);}
+  .form-group textarea{resize:vertical;min-height:100px;}
+  .form-submit{width:100%;background:linear-gradient(135deg, #2A6B55, #1F4D3D);color:#F5F1E8;border:none;padding:18px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;font-weight:600;cursor:pointer;transition:all .3s;margin-top:10px;box-shadow:0 8px 24px rgba(212,165,116,.3);border-radius:2px;}
+  .form-submit:hover{background:linear-gradient(135deg, var(--gold-light), var(--gold));transform:translateY(-2px);box-shadow:0 12px 36px rgba(212,165,116,.4);}
+  .form-submit:disabled{opacity:.6;cursor:not-allowed;}
+  #form-msg{text-align:center;padding:12px;margin-top:16px;font-size:13px;display:none;}
+  #form-msg.success{color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);}
+  #form-msg.error{color:#f87171;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);}
+
+  /* ===== ENQUIRY MODAL ===== */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+  .modal-overlay.open{display:flex;}
+  .modal{background:linear-gradient(135deg, rgba(31,77,61,0.85) 0%, rgba(15,20,25,0.95) 100%);border:1.5px solid rgba(212,165,116,.25);padding:52px;max-width:540px;width:90%;position:relative;animation:fadeUp .3s ease;box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 0 30px rgba(212,165,116,.08);backdrop-filter:blur(10px);}
+  .modal-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--gold-dim);font-size:22px;cursor:pointer;transition:color .3s;}
+  .modal-close:hover{color:var(--gold);}
+  .modal-label{font-size:9px;letter-spacing:4px;color:var(--gold);margin-bottom:10px;}
+  .modal-title{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--cream);margin-bottom:8px;}
+  .modal-item-name{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);margin-bottom:28px;}
+  .modal-phone{display:flex;align-items:center;gap:14px;background:rgba(212,165,116,.06);border:1px solid rgba(212,165,116,.2);padding:20px 24px;margin-bottom:30px;}
+  .modal-phone-icon{font-size:24px;}
+  .modal-phone-details strong{display:block;font-family:'Cinzel',serif;font-size:18px;color:var(--gold);}
+  .modal-phone-details span{font-size:11px;letter-spacing:2px;color:var(--cream-dim);}
+  #modal-form-msg{text-align:center;padding:10px;margin-top:14px;font-size:12px;display:none;}
+  #modal-form-msg.success{color:#4ade80;}
+  #modal-form-msg.error{color:#f87171;}
+
+  /* ===== FOOTER ===== */
+  footer{background:linear-gradient(180deg, #1F4D3D 0%, #0D2A22 100%);padding:60px 60px 30px;border-top:1px solid rgba(212,165,116,.15);box-shadow:0 -4px 20px rgba(0,0,0,.3);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px;}
+  .footer-brand .nav-brand{font-size:16px;}
+  .footer-brand p{font-size:13px;color:var(--cream-dim);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300;}
+  .footer-col h4{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:20px;}
+  .footer-col a{display:block;font-size:13px;color:var(--cream-dim);text-decoration:none;margin-bottom:12px;transition:color .3s;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid rgba(212,165,116,.1);padding-top:28px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--cream-dim);}
+
+  /* ===== ADMIN PANEL ===== */
+  #admin-panel{display:none;position:fixed;inset:0;z-index:9999;background:var(--black);overflow-y:auto;}
+  .admin-nav{background:var(--dark);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(212,165,116,.15);}
+  .admin-nav h1{font-family:'Cinzel',serif;color:var(--gold);font-size:18px;letter-spacing:3px;}
+  .admin-body{padding:40px;}
+  .admin-tabs{display:flex;gap:4px;margin-bottom:40px;}
+  .admin-tab{padding:12px 28px;font-size:11px;letter-spacing:2px;font-family:'Cinzel',serif;background:var(--dark2);border:none;color:var(--cream-dim);cursor:pointer;transition:all .3s;}
+  .admin-tab.active{background:var(--gold);color:var(--black);}
+  .admin-section{display:none;}
+  .admin-section.active{display:block;}
+  .upload-form{background:var(--dark2);padding:40px;border:1px solid rgba(212,165,116,.12);max-width:700px;}
+  .upload-form h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:30px;}
+  .img-upload-area{border:2px dashed rgba(212,165,116,.3);padding:40px;text-align:center;cursor:pointer;transition:all .3s;margin-bottom:20px;position:relative;}
+  .img-upload-area:hover{border-color:var(--gold);background:rgba(212,165,116,.04);}
+  .img-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+  .img-upload-area p{color:var(--cream-dim);font-size:13px;}
+  .img-upload-area .ico{font-size:36px;margin-bottom:12px;}
+  #img-preview{width:100%;height:180px;object-fit:cover;display:none;margin-bottom:16px;}
+  .admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .admin-item{background:var(--dark2);border:1px solid rgba(212,165,116,.1);overflow:hidden;}
+  .admin-item img{width:100%;height:200px;object-fit:cover;}
+  .admin-item-info{padding:16px;}
+  .admin-item-info .name{font-family:'Cinzel',serif;font-size:13px;color:var(--cream);margin-bottom:4px;}
+  .admin-item-info .cat{font-size:9px;letter-spacing:2px;color:var(--gold);}
+  .admin-item-info .price{font-size:13px;color:var(--gold);margin-top:8px;}
+  .admin-item-actions{display:flex;gap:8px;padding:0 16px 16px;}
+  .del-btn{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#f87171;padding:6px 14px;font-size:9px;letter-spacing:1.5px;cursor:pointer;transition:all .3s;}
+  .del-btn:hover{background:#f87171;color:white;}
+  .admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--black);}
+  .admin-login-box{background:var(--dark2);padding:52px;border:1px solid rgba(212,165,116,.15);width:400px;text-align:center;}
+  .admin-login-box h2{font-family:'Cinzel',serif;color:var(--gold);font-size:20px;letter-spacing:3px;margin-bottom:8px;}
+  .admin-login-box p{color:var(--cream-dim);font-size:13px;margin-bottom:32px;}
+  #login-error{color:#f87171;font-size:12px;margin-top:12px;display:none;}
+  .enquiries-list{display:grid;gap:16px;}
+  .enquiry-card{background:var(--dark2);border:1px solid rgba(212,165,116,.1);padding:24px;display:grid;grid-template-columns:1fr auto;}
+  .enquiry-card h4{font-family:'Cinzel',serif;font-size:14px;color:var(--cream);margin-bottom:6px;}
+  .enquiry-card p{font-size:12px;color:var(--cream-dim);line-height:1.7;}
+  .enquiry-date{font-size:10px;color:var(--gold-dim);letter-spacing:1px;}
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .fade-in.visible{opacity:1;transform:none;}
+
+  /* ===== SPARKLES ===== */
+  #sparkle-container{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;}
+  .sparkle{position:absolute;width:3px;height:3px;background:var(--gold-light);border-radius:50%;opacity:0;box-shadow:0 0 14px 2px var(--gold),0 0 24px 4px rgba(212,165,116,0.5);animation:sparkle-float linear infinite;}
+  @keyframes sparkle-float{0%{opacity:0;transform:translateY(0) scale(.4);}10%{opacity:1;}50%{opacity:.85;transform:translateY(-160px) scale(1.3);filter:brightness(1.3);}100%{opacity:0;transform:translateY(-320px) scale(.2);}}
+
+  /* ===== HERO BG IMAGE LAYER ===== */
+  #hero-bg-image{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease;z-index:0;}
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .whatsapp-float{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.45);z-index:800;text-decoration:none;font-size:28px;transition:transform .3s;animation:wa-pulse 2.6s ease infinite;}
+  .whatsapp-float:hover{transform:scale(1.12);}
+  @keyframes wa-pulse{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 0 rgba(37,211,102,.5);}50%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 14px rgba(37,211,102,0);}}
+
+  /* ===== WHY CHOOSE US ===== */
+  #why-us{background:var(--dark);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1300px;margin:0 auto;}
+  .why-card{text-align:center;padding:44px 24px;border:1px solid rgba(212,165,116,.1);transition:all .4s;background:var(--dark2);}
+  .why-card:hover{border-color:var(--gold);background:rgba(212,165,116,.05);transform:translateY(-8px);}
+  .why-icon{font-size:38px;margin-bottom:18px;}
+  .why-title{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--cream);margin-bottom:12px;}
+  .why-desc{font-size:12.5px;color:var(--cream-dim);line-height:1.8;font-weight:300;}
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials{background:linear-gradient(180deg, #0F1419 0%, #151A22 100%);}
+  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto;}
+  .testimonial-card{background:linear-gradient(135deg, rgba(26,21,16,0.8) 0%, rgba(17,14,9,0.6) 100%);border:1px solid rgba(212,165,116,.15);padding:36px;transition:all .4s ease;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+  .testimonial-card:hover{transform:translateY(-8px);border-color:rgba(212,165,116,.4);box-shadow:0 16px 48px rgba(212,165,116,.25),inset 0 0 20px rgba(212,165,116,.06);background:linear-gradient(135deg, rgba(26,21,16,0.95) 0%, rgba(17,14,9,0.8) 100%);}
+  .testimonial-stars{color:var(--gold);font-size:13px;letter-spacing:4px;margin-bottom:20px;text-shadow:0 0 8px rgba(212,165,116,.3);}
+  .testimonial-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--cream-dim);line-height:1.85;margin-bottom:26px;min-height:110px;}
+  .testimonial-author{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(212,165,116,.15);padding-top:18px;}
+  .testimonial-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg, #2A6B55, #1F4D3D);color:#F5F1E8;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:700;font-size:15px;flex-shrink:0;box-shadow:0 4px 12px rgba(212,165,116,.3);}
+  .testimonial-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--cream);}
+  .testimonial-loc{font-size:11px;color:var(--gold-dim);margin-top:3px;}
+
+  /* ===== SITE IMAGE ADMIN CARDS ===== */
+  .site-img-card{background:var(--dark2);border:1px solid rgba(212,165,116,.12);overflow:hidden;}
+  .site-img-card img{width:100%;height:170px;object-fit:cover;display:block;}
+  .site-img-card .lbl{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .site-img-card .lbl span{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:var(--gold);}
+  .upload-mini{position:relative;overflow:hidden;display:inline-block;}
+  .upload-mini input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+  .upload-mini-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:9px;letter-spacing:1.5px;padding:6px 14px;cursor:pointer;font-family:'Cinzel',serif;transition:all .3s;white-space:nowrap;}
+  .upload-mini-btn:hover{background:var(--gold);color:var(--black);}
+
+  /* ===== ADMIN EXTRAS ===== */
+  .edit-btn{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);color:var(--gold);padding:6px 14px;font-size:9px;letter-spacing:1.5px;cursor:pointer;transition:all .3s;}
+  .edit-btn:hover{background:var(--gold);color:var(--black);}
+  .security-note{background:rgba(212,165,116,.06);border:1px solid rgba(212,165,116,.18);padding:18px 22px;font-size:12px;color:var(--cream-dim);line-height:1.8;margin-top:20px;}
+  .security-note strong{color:var(--gold);}
+  .session-info{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:1px;color:var(--cream-dim);}
+  .session-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulseDot 2s ease infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.3}}
+  .lock-msg{color:#f87171;font-size:12px;margin-top:12px;display:none;text-align:center;}
+
+  /* ===== EDIT ITEM MODAL ===== */
+  .edit-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+  .edit-modal-overlay.open{display:flex;}
+  .edit-modal{background:var(--dark2);border:1px solid rgba(212,165,116,.2);padding:44px;max-width:560px;width:90%;position:relative;max-height:90vh;overflow-y:auto;}
+  .edit-modal h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);margin-bottom:24px;}
+
+  /* honeypot - hidden from real users */
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-links.open{display:flex;flex-direction:column;position:fixed;top:65px;left:0;right:0;background:var(--dark);padding:30px 24px;border-bottom:1px solid rgba(212,165,116,.15);gap:24px;}
+    section{padding:70px 24px;}
+    .stats-bar{grid-template-columns:repeat(2,1fr);padding:30px 24px;}
+    .jewellery-grid{grid-template-columns:1fr 1fr;}
+    .designs-grid{grid-template-columns:1fr;}
+    .loan-layout,.about-layout,.contact-layout{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .admin-grid{grid-template-columns:1fr 1fr;}
+    .hero-title-main{font-size:clamp(52px,18vw,100px);}
+  }
+  @media(max-width:600px){
+    .jewellery-grid{grid-template-columns:1fr;}
+    .admin-grid{grid-template-columns:1fr;}
+    .about-img-stack{height:380px;}
+    .about-img-main{height:300px;}
+  }
+  @media(max-width:900px){
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .testimonials-grid{grid-template-columns:1fr;}
+    .whatsapp-float{width:50px;height:50px;font-size:24px;bottom:18px;right:18px;}
+  }
+  @media(max-width:600px){
+    .why-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">
+    <svg class="nav-logo-svg" width="32" height="40" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg">
+      <!-- T letter -->
+      <rect x="4" y="2" width="24" height="3" fill="#C9A84C"/>
+      <rect x="14" y="5" width="4" height="18" fill="#C9A84C"/>
+      <!-- J letter (overlapping) -->
+      <path d="M 22 8 L 22 24 Q 22 32 16 35 Q 14 36 12 35" stroke="#C9A84C" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Glow effect -->
+      <circle cx="16" cy="20" r="8" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+    <div class="nav-brand">TAJ JEWELLERS<small>EST. 1997 · DARBHANGA</small></div>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#collections">Collections</a>
+    <a href="#designs">Designs</a>
+    <a href="#gold-loan">Gold Loan</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">BOOK APPOINTMENT</a>
+  </div>
+  <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" style="margin-top:65px;">
+  <div class="ticker-inner" id="ticker-inner">
+    <span>✦ NEEM CHOWK DARBHANGA</span><span>✦ BRIDAL SETS</span><span>✦ SINCE 1997</span><span>✦ BIHAR'S FINEST</span><span>✦ BIS HALLMARK GOLD</span><span>✦ GOLD LOAN</span>
+    <span>✦ NEEM CHOWK DARBHANGA</span><span>✦ BRIDAL SETS</span><span>✦ SINCE 1997</span><span>✦ BIHAR'S FINEST</span><span>✦ BIS HALLMARK GOLD</span><span>✦ GOLD LOAN</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0;">
+  <div id="hero-bg-image"></div>
+  <div class="hero-bg-ornament"></div>
+  <div id="sparkle-container"></div>
+  <svg class="hero-leaves" width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 170 C60 170 10 120 10 70 C10 40 30 20 60 20 C90 20 110 40 110 70 C110 120 60 170 60 170Z" stroke="#C9A84C" stroke-width="1" fill="none"/><line x1="60" y1="20" x2="60" y2="170" stroke="#C9A84C" stroke-width=".5"/><path d="M60 60 Q35 50 20 65" stroke="#C9A84C" stroke-width=".5" fill="none"/><path d="M60 90 Q30 78 15 95" stroke="#C9A84C" stroke-width=".5" fill="none"/><path d="M60 120 Q35 108 25 125" stroke="#C9A84C" stroke-width=".5" fill="none"/><path d="M60 60 Q85 50 100 65" stroke="#C9A84C" stroke-width=".5" fill="none"/><path d="M60 90 Q90 78 105 95" stroke="#C9A84C" stroke-width=".5" fill="none"/></svg>
+  <svg class="hero-leaves-r" width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 170 C60 170 10 120 10 70 C10 40 30 20 60 20 C90 20 110 40 110 70 C110 120 60 170 60 170Z" stroke="#C9A84C" stroke-width="1" fill="none"/><line x1="60" y1="20" x2="60" y2="170" stroke="#C9A84C" stroke-width=".5"/><path d="M60 60 Q35 50 20 65" stroke="#C9A84C" stroke-width=".5" fill="none"/><path d="M60 90 Q30 78 15 95" stroke="#C9A84C" stroke-width=".5" fill="none"/></svg>
+  <div class="hero-content">
+    <div class="hero-est">EST. 1997 — NEEM CHOWK, DARBHANGA, BIHAR</div>
+    <div class="hero-title-main">TAJ</div>
+    <div class="hero-title-sub">Jewellers</div>
+    <p class="hero-desc">Bihar's trusted gold destination since 1997. BIS Hallmark certified jewellery, expert craftsmanship — and gold loans (Bandhak) at just 3% monthly.</p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-primary">VIEW COLLECTIONS</a>
+      <a href="#gold-loan" class="btn-outline">GOLD LOAN (BANDHAK)</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>SCROLL</span><div class="scroll-mouse"></div></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">27+</span><span class="stat-label">Years of Excellence</span></div>
+  <div class="stat-item"><span class="stat-num">BIS</span><span class="stat-label">Hallmark Certified</span></div>
+  <div class="stat-item"><span class="stat-num">3%</span><span class="stat-label">Gold Loan / Month</span></div>
+  <div class="stat-item"><span class="stat-num">Darbhanga</span><span class="stat-label">Neem Chowk, Bihar</span></div>
+</div>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="collections-header fade-in">
+    <div class="section-label">Our Craft</div>
+    <h2 class="section-title">Curated <em>Collections</em></h2>
+    <div class="divider"><span class="divider-star">✦</span></div>
+  </div>
+  <div class="filter-tabs" id="filter-tabs">
+    <button class="filter-tab active" data-filter="all" onclick="filterItems('all',this)">ALL</button>
+    <button class="filter-tab" data-filter="rings" onclick="filterItems('rings',this)">RINGS</button>
+    <button class="filter-tab" data-filter="necklaces" onclick="filterItems('necklaces',this)">NECKLACES</button>
+    <button class="filter-tab" data-filter="bangles" onclick="filterItems('bangles',this)">BANGLES</button>
+    <button class="filter-tab" data-filter="earrings" onclick="filterItems('earrings',this)">EARRINGS</button>
+  </div>
+  <div class="jewellery-grid" id="jewellery-grid">
+    <!-- Items rendered by JS -->
+  </div>
+</section>
+
+<!-- DESIGNS -->
+<section id="designs">
+  <div class="designs-intro fade-in">
+    <div class="section-label">Featured Designs</div>
+    <h2 class="section-title">Crafted with <em>Heritage</em></h2>
+    <div class="divider"><span class="divider-star">✦</span></div>
+    <p class="section-desc" style="margin:0 auto;text-align:center;">Our master craftsmen blend Mughal artistry with contemporary elegance — each collection tells a story of heritage and sophistication.</p>
+  </div>
+  <div class="designs-grid" style="margin-top:60px;">
+    <div class="design-card fade-in">
+      <img id="img-design-1" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80" alt="Royal Heirloom Set">
+      <div class="design-overlay"><div class="design-line">TAJ ATELIER · 6 PIECES</div><div class="design-name">Royal Heirloom Set</div></div>
+    </div>
+    <div class="design-card fade-in">
+      <img id="img-design-2" src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80" alt="Bridal Collection">
+      <div class="design-overlay"><div class="design-line">TAJ ATELIER · 12 PIECES</div><div class="design-name">Bridal Collection</div></div>
+    </div>
+    <div class="design-card fade-in">
+      <img id="img-design-3" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80" alt="Minimalist Gold">
+      <div class="design-overlay"><div class="design-line">TAJ MODERN · 4 PIECES</div><div class="design-name">Minimalist Gold</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD LOAN -->
+<section id="gold-loan">
+  <div class="loan-layout">
+    <div class="fade-in">
+      <div class="section-label">Financial Service</div>
+      <h2 class="loan-title">Gold Loan<br><em>(Bandhak) Service</em></h2>
+      <div class="divider"><span class="divider-star">✦</span></div>
+      <p class="loan-desc">Need urgent funds? Pledge your gold jewellery with Taj Jewellers and get an instant loan at just <strong style="color:var(--gold)">3% interest per month</strong>. Your gold is kept safe and returned the moment you repay — no paperwork hassle, no hidden charges.</p>
+      <ul class="loan-features">
+        <li>Instant loan — same day disbursement</li>
+        <li>Your gold kept safe in our secure vault</li>
+        <li>Only 3% interest per month — transparent</li>
+        <li>No hidden charges, no documentation hassle</li>
+        <li>Get your gold back anytime on repayment</li>
+      </ul>
+      <button class="btn-primary" onclick="openEnquiry('Gold Loan (Bandhak) Service')">ENQUIRE ABOUT GOLD LOAN</button>
+    </div>
+    <div class="loan-img-wrap fade-in">
+      <div class="loan-badge">
+        <div class="rate">3%</div>
+        <div class="rate-sub">PER MONTH INTEREST</div>
+      </div>
+      <img id="img-loan" src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=700&q=80" alt="Gold Jewellery" style="margin-top:16px;">
+      <div class="loan-img-tag">
+        <strong>Instant</strong>
+        <span>SAME DAY DISBURSEMENT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-img-stack fade-in">
+      <img class="about-img-main" id="img-about" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80" alt="Gold Jewellery">
+      <div class="about-img-year"><div class="yr">1997</div><div class="yr-sub">SINCE</div></div>
+    </div>
+    <div class="fade-in">
+      <div class="section-label">Our Heritage</div>
+      <h2 class="section-title">Darbhanga's Legacy of <em>Liquid Gold</em></h2>
+      <div class="divider"><span class="divider-star">✦</span></div>
+      <p class="section-desc" style="margin-bottom:32px;">Established in 1997 by <strong style="color:var(--cream)">Shri Balram Kumar Prasad</strong> at Neem Chowk, Darbhanga — Taj Jewellers has grown to become one of Bihar's most trusted names in gold jewellery. Today the legacy is carried forward with pride by <strong style="color:var(--cream)">Shri Vishal Kumar Prasad</strong>.</p>
+      <p class="section-desc">Every piece we sell carries BIS Hallmark certification — your guarantee of gold purity. We also offer the trusted Bandhak (gold loan) service at just 3% monthly interest, helping families in times of need without parting with their precious jewellery permanently.</p>
+      <div class="about-facts">
+        <div class="fact-item"><div class="fact-label">FOUNDED BY</div><div class="fact-val">Balram Kumar Prasad</div></div>
+        <div class="fact-item"><div class="fact-label">CURRENT OWNER</div><div class="fact-val">Vishal Kumar Prasad</div></div>
+        <div class="fact-item"><div class="fact-label">GOLD STANDARD</div><div class="fact-val">BIS Hallmark Certified</div></div>
+        <div class="fact-item"><div class="fact-label">LOCATION</div><div class="fact-val">Neem Chowk, Darbhanga</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="collections-header fade-in">
+    <div class="section-label">Client Stories</div>
+    <h2 class="section-title">Words From Our <em>Family</em></h2>
+    <div class="divider"><span class="divider-star">✦</span></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Bought my daughter's bridal set from Taj Jewellers — the craftsmanship is exquisite and the BIS hallmark gave us full confidence. Truly Bihar's finest."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">RS</div>
+        <div><div class="testimonial-name">RAJESH SINGH</div><div class="testimonial-loc">Darbhanga, Bihar</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Needed urgent funds and the gold loan process was so smooth — same day disbursement, transparent 3% interest, and my jewellery was returned safely on repayment."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">PK</div>
+        <div><div class="testimonial-name">PRIYA KUMARI</div><div class="testimonial-loc">Neem Chowk, Darbhanga</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Three generations of our family have trusted Taj Jewellers. The custom design team turned my idea into a stunning necklace exactly as I imagined it."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AM</div>
+        <div><div class="testimonial-name">ANITA MISHRA</div><div class="testimonial-loc">Laheriasarai, Darbhanga</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="fade-in">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="contact-info"><h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);color:var(--cream);margin-bottom:24px;">Book an <em style="color:var(--gold);font-style:italic;">Appointment</em></h2></h2>
+      <p style="font-size:14px;color:var(--cream-dim);line-height:1.9;font-weight:300;margin-bottom:40px;">Visit our flagship showroom or submit a custom design inquiry. Our consultants will guide you through the finest pieces in our collection.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail-text"><strong>PHONE</strong><span>+91 62034 10013</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail-text"><strong>LOCATION</strong><span>Neem Chowk, Darbhanga, Bihar</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-detail-text"><strong>HOURS</strong><span>Mon–Sat: 10am – 8pm</span></div>
+      </div>
+    </div>
+    <div class="contact-form fade-in">
+      <input type="text" id="c-website" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group"><label>FULL NAME</label><input type="text" id="c-name" placeholder="Your name"></div>
+        <div class="form-group"><label>PHONE</label><input type="tel" id="c-phone" placeholder="+91 00000 00000"></div>
+      </div>
+      <div class="form-group"><label>EMAIL</label><input type="email" id="c-email" placeholder="your@email.com"></div>
+      <div class="form-group">
+        <label>INTERESTED IN</label>
+        <select id="c-interest">
+          <option value="">Select category</option>
+          <option>Rings</option><option>Necklaces</option><option>Bangles</option><option>Earrings</option>
+          <option>Bridal Set</option><option>Gold Loan (Bandhak)</option><option>Custom Design</option>
+        </select>
+      </div>
+      <div class="form-group"><label>MESSAGE</label><textarea id="c-message" placeholder="Tell us what you're looking for..."></textarea></div>
+      <button class="form-submit" onclick="submitAppointment()">BOOK APPOINTMENT</button>
+      <div id="form-msg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="display:inline-flex;gap:12px;align-items:center;margin-bottom:6px;">
+        <span style="color:var(--gold);font-size:20px;">★</span>
+        <div class="nav-brand" style="font-size:14px;">TAJ JEWELLERS<small>EST. 1997 · DARBHANGA</small></div>
+      </div>
+      <p>Bihar's trusted gold destination since 1997. Every piece carries BIS Hallmark certification and the legacy of over 27 years of master craftsmanship.</p>
+    </div>
+    <div class="footer-col">
+      <h4>COLLECTIONS</h4>
+      <a href="#collections">Rings</a><a href="#collections">Necklaces</a><a href="#collections">Bangles</a><a href="#collections">Earrings</a><a href="#collections">Bridal Sets</a>
+    </div>
+    <div class="footer-col">
+      <h4>SERVICES</h4>
+      <a href="#gold-loan">Gold Loan (Bandhak)</a><a href="#designs">Custom Designs</a><a href="#contact">Book Appointment</a><a href="#about">About Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Taj Jewellers, Darbhanga. All rights reserved.</span>
+    <span style="color:var(--gold-dim);">BIS Hallmark Certified · Est. 1997</span>
+    <button onclick="openAdmin()" style="background:none;border:none;color:rgba(212,165,116,.25);font-size:10px;letter-spacing:2px;cursor:pointer;font-family:'Cinzel',serif;transition:color .3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(212,165,116,.25)'">ADMIN</button>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/916203410013?text=Hi%20Taj%20Jewellers%2C%20I%20would%20like%20to%20enquire%20about%20your%20jewellery%20collection." target="_blank" rel="noopener" class="whatsapp-float" title="Chat with us on WhatsApp" aria-label="WhatsApp">💬</a>
+
+<!-- ENQUIRY MODAL -->
+<div class="modal-overlay" id="enquiry-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeEnquiry()">✕</button>
+    <div class="modal-label">ENQUIRE NOW</div>
+    <div class="modal-title">Get in Touch</div>
+    <div class="modal-item-name" id="modal-item-title"></div>
+    <input type="text" id="m-website" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+    <div class="modal-phone">
+      <div class="modal-phone-icon">📞</div>
+      <div class="modal-phone-details">
+        <strong>+91 62034 10013</strong>
+        <span>CALL OR WHATSAPP US</span>
+      </div>
+    </div>
+    <div class="form-group"><label>YOUR NAME</label><input type="text" id="m-name" placeholder="Your name"></div>
+    <div class="form-group"><label>PHONE NUMBER</label><input type="tel" id="m-phone" placeholder="+91 00000 00000"></div>
+    <div class="form-group"><label>MESSAGE (OPTIONAL)</label><textarea id="m-message" style="min-height:70px;" placeholder="Any specific requirements..."></textarea></div>
+    <button class="form-submit" onclick="submitEnquiry()">SEND ENQUIRY</button>
+    <div id="modal-form-msg"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <!-- Login -->
+  <div id="admin-login" class="admin-login">
+    <div class="admin-login-box">
+      <h2>ADMIN ACCESS</h2>
+      <p>Taj Jewellers Management Panel</p>
+      <div class="form-group"><label>PASSWORD</label><input type="password" id="admin-pass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkLogin()"></div>
+      <button class="form-submit" onclick="checkLogin()">LOGIN</button>
+      <div id="login-error">Incorrect password. Try again.</div>
+    </div>
+  </div>
+  <!-- Dashboard -->
+  <div id="admin-dashboard" style="display:none;">
+    <div class="admin-nav">
+      <h1>★ TAJ JEWELLERS — ADMIN</h1>
+      <div class="session-info">
+        <span class="session-dot"></span>
+        <span id="session-timer">Session active</span>
+        <button onclick="closeAdmin()" style="background:none;border:1px solid rgba(212,165,116,.3);color:var(--gold);padding:8px 20px;font-size:10px;letter-spacing:2px;cursor:pointer;font-family:'Cinzel',serif;">EXIT</button>
+      </div>
+    </div>
+    <div class="admin-body">
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('upload',this)">UPLOAD JEWELLERY</button>
+        <button class="admin-tab" onclick="switchAdminTab('manage',this)">MANAGE ITEMS</button>
+        <button class="admin-tab" onclick="switchAdminTab('siteimages',this)">SITE IMAGES</button>
+        <button class="admin-tab" onclick="switchAdminTab('enquiries',this)">ENQUIRIES</button>
+      </div>
+      <!-- Upload Tab -->
+      <div class="admin-section active" id="admin-upload">
+        <div class="upload-form">
+          <h3>Add New Jewellery Item</h3>
+          <div class="img-upload-area" onclick="document.getElementById('img-file').click()">
+            <div class="ico">📷</div>
+            <p>Click to upload jewellery photo</p>
+            <p style="font-size:11px;margin-top:6px;color:var(--gold-dim);">JPG, PNG supported</p>
+            <input type="file" id="img-file" accept="image/*" onchange="previewImage(this)" style="display:none;">
+          </div>
+          <img id="img-preview" alt="Preview">
+          <div class="form-row">
+            <div class="form-group"><label>ITEM NAME</label><input type="text" id="up-name" placeholder="e.g. Bridal Choker Set"></div>
+            <div class="form-group"><label>CATEGORY</label>
+              <select id="up-cat">
+                <option value="rings">Rings</option><option value="necklaces">Necklaces</option>
+                <option value="bangles">Bangles</option><option value="earrings">Earrings</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>PRICE (₹)</label><input type="number" id="up-price" placeholder="85000"></div>
+            <div class="form-group"><label>BADGE (OPTIONAL)</label>
+              <select id="up-badge">
+                <option value="">None</option><option>BESTSELLER</option><option>NEW</option>
+                <option>CLASSIC</option><option>EXCLUSIVE</option><option>LIMITED</option><option>BRIDAL</option>
+              </select>
+            </div>
+          </div>
+          <button class="form-submit" onclick="addJewellery()">ADD TO COLLECTION</button>
+          <div id="upload-msg" style="color:var(--gold);font-size:13px;margin-top:14px;display:none;text-align:center;"></div>
+        </div>
+        <div style="margin-top:36px;background:var(--dark2);padding:28px;border:1px solid rgba(212,165,116,.1);max-width:700px;">
+          <h4 style="font-family:'Cinzel',serif;color:var(--gold);letter-spacing:2px;margin-bottom:16px;">HOW TO USE THE ADMIN PANEL</h4>
+          <ol style="color:var(--cream-dim);font-size:13px;line-height:2.1;padding-left:18px;">
+            <li>Click the tiny <strong style="color:var(--gold)">ADMIN</strong> link in the footer.</li>
+            <li>Enter your admin password (default: <code style="background:var(--dark);padding:2px 8px;color:var(--gold);">taj1997</code> — change this, see note below).</li>
+            <li>Upload a jewellery photo, fill in name, category, price, and badge.</li>
+            <li>Click <strong style="color:var(--gold)">ADD TO COLLECTION</strong> — it appears on the website instantly.</li>
+            <li>Use <strong style="color:var(--gold)">MANAGE ITEMS</strong> to edit details/photo or delete any item.</li>
+            <li>Use <strong style="color:var(--gold)">SITE IMAGES</strong> to change the hero background, about photo, gold loan photo, and the 3 featured design photos.</li>
+            <li>Use <strong style="color:var(--gold)">ENQUIRIES</strong> to see everyone who has contacted you.</li>
+          </ol>
+        </div>
+        <div class="security-note">
+          <strong>🔒 Security notes:</strong> Your session auto-locks after 15 minutes of inactivity, and the login locks for 60 seconds after 5 wrong password attempts. All data is stored only in this browser (localStorage) — it will not appear on other devices/browsers. To change the admin password: open the HTML file, run <code>echo -n "yourNewPassword" | sha256sum</code> in a terminal, and replace the <code>ADMIN_PASS_HASH</code> value near the top of the script with the result. For a production deployment with shared data across devices, connect this site to a real backend (e.g. Firebase, Supabase, or a Node.js server) — ask your developer to wire up the same functions (<code>getItems</code>, <code>saveItems</code>, <code>getEnquiries</code>) to an API instead of localStorage.
+        </div>
+      </div>
+      <!-- Manage Tab -->
+      <div class="admin-section" id="admin-manage">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:28px;">All Jewellery Items</h3>
+        <div class="admin-grid" id="admin-grid-items"></div>
+      </div>
+      <!-- Site Images Tab -->
+      <div class="admin-section" id="admin-siteimages">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:12px;">Website Images</h3>
+        <p style="color:var(--cream-dim);font-size:13px;margin-bottom:28px;max-width:600px;line-height:1.8;">Update the key photos shown across your website. Click "Change Image" on any card, choose a photo from your device, and it updates on the live site instantly.</p>
+        <div class="admin-grid" id="admin-site-images"></div>
+      </div>
+      <!-- Enquiries Tab -->
+      <div class="admin-section" id="admin-enquiries">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:28px;">Received Enquiries</h3>
+        <div class="enquiries-list" id="admin-enquiry-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT ITEM MODAL -->
+<div class="edit-modal-overlay" id="edit-modal">
+  <div class="edit-modal">
+    <button class="modal-close" onclick="closeEditModal()" style="position:absolute;top:16px;right:16px;">✕</button>
+    <h3>Edit Jewellery Item</h3>
+    <div class="img-upload-area" onclick="document.getElementById('edit-img-file').click()">
+      <div class="ico">📷</div>
+      <p>Click to change photo (optional)</p>
+      <input type="file" id="edit-img-file" accept="image/*" onchange="previewEditImage(this)" style="display:none;">
+    </div>
+    <img id="edit-img-preview" alt="Preview" style="width:100%;height:180px;object-fit:cover;margin-bottom:16px;">
+    <div class="form-row">
+      <div class="form-group"><label>ITEM NAME</label><input type="text" id="edit-name"></div>
+      <div class="form-group"><label>CATEGORY</label>
+        <select id="edit-cat">
+          <option value="rings">Rings</option><option value="necklaces">Necklaces</option>
+          <option value="bangles">Bangles</option><option value="earrings">Earrings</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>PRICE (₹)</label><input type="number" id="edit-price"></div>
+      <div class="form-group"><label>BADGE (OPTIONAL)</label>
+        <select id="edit-badge">
+          <option value="">None</option><option>BESTSELLER</option><option>NEW</option>
+          <option>CLASSIC</option><option>EXCLUSIVE</option><option>LIMITED</option><option>BRIDAL</option>
+        </select>
+      </div>
+    </div>
+    <button class="form-submit" onclick="saveEditItem()">SAVE CHANGES</button>
+  </div>
+</div>
+
+<script>
+// ===========================
+// SECURITY UTILITIES
+// ===========================
+// Escape any user-supplied text before inserting into HTML (XSS protection)
+function escapeHtml(str){
+  if(str===null||str===undefined) return '';
+  return String(str).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+// Basic validators
+const PHONE_REGEX = /^[\d\s\+\-\(\)]{7,16}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidPhone(p){return PHONE_REGEX.test(p.trim());}
+function isValidEmail(e){return e.trim()===''||EMAIL_REGEX.test(e.trim());}
+
+// Simple submission rate-limit (prevents spam bots hammering forms)
+const RATE_KEY='taj_last_submit';
+function rateLimitOk(){
+  const last=Number(localStorage.getItem(RATE_KEY)||0);
+  const now=Date.now();
+  if(now-last<15000) return false; // 15 second cooldown
+  localStorage.setItem(RATE_KEY, String(now));
+  return true;
+}
+
+// SHA-256 hashing for admin password (avoids storing plain-text password)
+async function sha256Hex(message){
+  const data=new TextEncoder().encode(message);
+  const hashBuffer=await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+// ===========================
+// DATA STORE (localStorage)
+// ===========================
+const STORE_KEY = 'taj_jewellery';
+const ENQ_KEY   = 'taj_enquiries';
+const SITE_IMG_KEY = 'taj_site_images';
+
+const defaultItems = [
+  {id:1,name:'Bridal Rings',cat:'rings',price:'85,000',badge:'',img:'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80'},
+  {id:2,name:'Gold Choker',cat:'necklaces',price:'1,20,000',badge:'',img:'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80'},
+  {id:3,name:'Gold Bangles Set',cat:'bangles',price:'65,000',badge:'',img:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80'},
+  {id:4,name:'Diamond Earrings',cat:'earrings',price:'95,000',badge:'EXCLUSIVE',img:'https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=600&q=80'},
+  {id:5,name:'Filigree Ring',cat:'rings',price:'72,000',badge:'',img:'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80'},
+  {id:6,name:'Pearl Necklace',cat:'necklaces',price:'1,50,000',badge:'LIMITED',img:'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80'},
+  {id:7,name:'Kundan Necklace',cat:'necklaces',price:'2,10,000',badge:'BRIDAL',img:'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80'},
+  {id:8,name:'Classic Gold Ring',cat:'rings',price:'45,000',badge:'BESTSELLER',img:'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80'},
+  {id:9,name:'Temple Bangles',cat:'bangles',price:'88,000',badge:'NEW',img:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80'},
+];
+
+function getItems(){
+  try{const d=localStorage.getItem(STORE_KEY);return d?JSON.parse(d):defaultItems;}catch{return defaultItems;}
+}
+function saveItems(items){try{localStorage.setItem(STORE_KEY,JSON.stringify(items));}catch{}}
+function getEnquiries(){
+  try{const d=localStorage.getItem(ENQ_KEY);return d?JSON.parse(d):[];}catch{return[];}
+}
+function saveEnquiries(arr){try{localStorage.setItem(ENQ_KEY,JSON.stringify(arr));}catch{}}
+
+// ===========================
+// SITE IMAGES (editable via Admin)
+// ===========================
+const defaultSiteImages = {
+  hero_bg: '',
+  about: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80',
+  loan: 'https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=700&q=80',
+  design1: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80',
+  design2: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80',
+  design3: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80',
+};
+const siteImageLabels = {
+  hero_bg: 'Hero Background (homepage)',
+  about: 'About Section Photo',
+  loan: 'Gold Loan Section Photo',
+  design1: 'Featured Design — Royal Heirloom Set',
+  design2: 'Featured Design — Bridal Collection',
+  design3: 'Featured Design — Minimalist Gold',
+};
+const siteImageElIds = {
+  about: 'img-about',
+  loan: 'img-loan',
+  design1: 'img-design-1',
+  design2: 'img-design-2',
+  design3: 'img-design-3',
+};
+function getSiteImages(){
+  try{const d=localStorage.getItem(SITE_IMG_KEY);return d?{...defaultSiteImages,...JSON.parse(d)}:{...defaultSiteImages};}catch{return{...defaultSiteImages};}
+}
+function saveSiteImages(obj){try{localStorage.setItem(SITE_IMG_KEY,JSON.stringify(obj));}catch{}}
+function applySiteImages(){
+  const imgs=getSiteImages();
+  for(const key in siteImageElIds){
+    const el=document.getElementById(siteImageElIds[key]);
+    if(el && imgs[key]) el.src=imgs[key];
+  }
+  const heroBg=document.getElementById('hero-bg-image');
+  if(heroBg){
+    if(imgs.hero_bg){
+      heroBg.style.backgroundImage=`url(${imgs.hero_bg})`;
+      heroBg.style.opacity='0.32';
+    }else{
+      heroBg.style.opacity='0';
+    }
+  }
+}
+
+// ===========================
+// EMAILJS  —  SETUP HERE
+// ===========================
+// 1. Go to https://www.emailjs.com — free account
+// 2. Add your Gmail (Manikant.usc.1@gmail.com) as Email Service
+// 3. Create an Email Template, note the template_id
+// 4. Get your Public Key from Account > API Keys
+// 5. Replace the values below:
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';   // <-- REPLACE
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';            // <-- REPLACE
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';           // <-- REPLACE
+
+(function(){
+  if(EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY'){
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
+})();
+
+async function sendEmail(params){
+  if(EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY'){
+    console.log('EmailJS not configured. Would send:', params);
+    return true; // simulate success for demo
+  }
+  try{
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+    return true;
+  }catch(e){console.error(e);return false;}
+}
+
+// ===========================
+// RENDER JEWELLERY GRID
+// ===========================
+let currentFilter = 'all';
+function renderGrid(filter='all'){
+  currentFilter = filter;
+  const items = getItems();
+  const grid = document.getElementById('jewellery-grid');
+  const filtered = filter==='all' ? items : items.filter(i=>i.cat===filter);
+  if(!filtered.length){grid.innerHTML='<div class="no-items-msg">No items in this category yet.</div>';return;}
+  grid.innerHTML = filtered.map(item=>`
+    <div class="jewel-card">
+      <div class="jewel-img-wrap">
+        ${item.badge?`<div class="jewel-badge">${escapeHtml(item.badge)}</div>`:''}
+        <img src="${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}" loading="lazy">
+      </div>
+      <div class="jewel-info">
+        <div class="jewel-category">${escapeHtml(item.cat.toUpperCase())}</div>
+        <div class="jewel-name">${escapeHtml(item.name)}</div>
+        <div class="jewel-footer">
+          <div class="jewel-price">₹ ${escapeHtml(item.price)}</div>
+          <button class="enquire-btn" onclick="openEnquiry(${item.id})">ENQUIRE</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterItems(f,btn){
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid(f);
+}
+
+// ===========================
+// ENQUIRY MODAL
+// ===========================
+let currentEnquiryItem = '';
+function openEnquiry(itemRef){
+  // itemRef can be a jewellery item id (number) or a plain label string (e.g. Gold Loan)
+  if(typeof itemRef === 'number'){
+    const item = getItems().find(i=>i.id===itemRef);
+    currentEnquiryItem = item ? `${item.name} — ₹${item.price}` : 'General Enquiry';
+  }else{
+    currentEnquiryItem = itemRef;
+  }
+  document.getElementById('modal-item-title').textContent = currentEnquiryItem;
+  document.getElementById('m-name').value='';
+  document.getElementById('m-phone').value='';
+  document.getElementById('m-message').value='';
+  document.getElementById('m-website').value='';
+  document.getElementById('modal-form-msg').style.display='none';
+  document.getElementById('enquiry-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeEnquiry(){
+  document.getElementById('enquiry-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('enquiry-modal').addEventListener('click',function(e){if(e.target===this)closeEnquiry();});
+
+async function submitEnquiry(){
+  const name = document.getElementById('m-name').value.trim();
+  const phone = document.getElementById('m-phone').value.trim();
+  const message = document.getElementById('m-message').value.trim();
+  const honeypot = document.getElementById('m-website').value.trim();
+  const msg = document.getElementById('modal-form-msg');
+  // Honeypot check — silently ignore bot submissions
+  if(honeypot){msg.style.display='block';msg.className='success';msg.innerHTML='✓ Enquiry sent! We will contact you shortly.';return;}
+  if(!name||!phone){msg.style.display='block';msg.className='error';msg.textContent='Please fill name and phone.';return;}
+  if(!isValidPhone(phone)){msg.style.display='block';msg.className='error';msg.textContent='Please enter a valid phone number.';return;}
+  if(!rateLimitOk()){msg.style.display='block';msg.className='error';msg.textContent='Please wait a few seconds before sending another enquiry.';return;}
+  const btn = document.querySelector('#enquiry-modal .form-submit');
+  btn.disabled=true;btn.textContent='SENDING...';
+  // Save locally
+  const enqs = getEnquiries();
+  enqs.unshift({id:Date.now(),name,phone,message,item:currentEnquiryItem,date:new Date().toLocaleString()});
+  saveEnquiries(enqs);
+  // Send email
+  await sendEmail({to_name:'Manikant',from_name:name,phone,item:currentEnquiryItem,message:message||'No message',reply_to:phone});
+  msg.style.display='block';msg.className='success';
+  msg.innerHTML=`✓ Enquiry sent! We will call you at <strong>${escapeHtml(phone)}</strong> shortly.<br>You can also call us: <strong>+91 62034 10013</strong>`;
+  btn.disabled=false;btn.textContent='SEND ENQUIRY';
+}
+
+// ===========================
+// APPOINTMENT FORM
+// ===========================
+async function submitAppointment(){
+  const name=document.getElementById('c-name').value.trim();
+  const phone=document.getElementById('c-phone').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const interest=document.getElementById('c-interest').value;
+  const message=document.getElementById('c-message').value.trim();
+  const honeypot=document.getElementById('c-website').value.trim();
+  const msg=document.getElementById('form-msg');
+  if(honeypot){msg.style.display='block';msg.className='success';msg.innerHTML='✓ Appointment request sent!';return;}
+  if(!name||!phone){msg.style.display='block';msg.className='error';msg.textContent='Please fill name and phone number.';return;}
+  if(!isValidPhone(phone)){msg.style.display='block';msg.className='error';msg.textContent='Please enter a valid phone number.';return;}
+  if(!isValidEmail(email)){msg.style.display='block';msg.className='error';msg.textContent='Please enter a valid email address.';return;}
+  if(!rateLimitOk()){msg.style.display='block';msg.className='error';msg.textContent='Please wait a few seconds before submitting again.';return;}
+  const btn=document.querySelector('#contact .form-submit');
+  btn.disabled=true;btn.textContent='SENDING...';
+  const enqs=getEnquiries();
+  enqs.unshift({id:Date.now(),name,phone,email,item:interest||'Appointment',message,date:new Date().toLocaleString()});
+  saveEnquiries(enqs);
+  await sendEmail({to_name:'Manikant',from_name:name,phone,email,item:interest||'General Appointment',message:message||'Appointment request',reply_to:email||phone});
+  msg.style.display='block';msg.className='success';
+  msg.innerHTML=`✓ Appointment request sent! We'll contact you at <strong>${escapeHtml(phone)}</strong>.<br>Or call us now: <strong>+91 62034 10013</strong>`;
+  btn.disabled=false;btn.textContent='BOOK APPOINTMENT';
+}
+
+// ===========================
+// ADMIN PANEL
+// ===========================
+// ===========================
+// ADMIN PANEL — SECURITY
+// ===========================
+// Default password is "taj1997" — stored ONLY as a SHA-256 hash (not plain text).
+// To change it: run  echo -n "yourNewPassword" | sha256sum  in a terminal,
+// then replace the value below with the resulting hash.
+const ADMIN_PASS_HASH = 'f6aaba788aecf024f6cafd214cc86140ae47f3ac857936d76099414718bb4a70';
+
+const LOGIN_ATTEMPTS_KEY='taj_admin_attempts';
+const LOGIN_LOCK_KEY='taj_admin_lock_until';
+const SESSION_KEY='taj_admin_session';
+const SESSION_TIMEOUT_MS = 15*60*1000; // 15 minutes
+const MAX_ATTEMPTS = 5;
+const LOCK_DURATION_MS = 60*1000; // 60 seconds
+
+let sessionTimerInterval=null;
+
+function openAdmin(){
+  document.getElementById('admin-panel').style.display='block';
+  document.body.style.overflow='hidden';
+  // Resume an active session if within timeout window
+  const sessionStart = Number(sessionStorage.getItem(SESSION_KEY)||0);
+  if(sessionStart && (Date.now()-sessionStart) < SESSION_TIMEOUT_MS){
+    showAdminDashboard();
+  }else{
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('admin-login').style.display='flex';
+    document.getElementById('admin-dashboard').style.display='none';
+    document.getElementById('admin-pass').value='';
+    updateLockUI();
+  }
+}
+
+function updateLockUI(){
+  const lockUntil=Number(localStorage.getItem(LOGIN_LOCK_KEY)||0);
+  const lockMsg=document.getElementById('login-error');
+  const loginBtn=document.querySelector('#admin-login .form-submit');
+  const passInput=document.getElementById('admin-pass');
+  if(Date.now() < lockUntil){
+    const secsLeft=Math.ceil((lockUntil-Date.now())/1000);
+    lockMsg.style.display='block';
+    lockMsg.textContent=`Too many attempts. Try again in ${secsLeft}s.`;
+    loginBtn.disabled=true;passInput.disabled=true;
+    setTimeout(updateLockUI,1000);
+  }else{
+    loginBtn.disabled=false;passInput.disabled=false;
+    if(lockUntil) localStorage.removeItem(LOGIN_LOCK_KEY);
+  }
+}
+
+async function checkLogin(){
+  const lockUntil=Number(localStorage.getItem(LOGIN_LOCK_KEY)||0);
+  if(Date.now() < lockUntil){updateLockUI();return;}
+  const p=document.getElementById('admin-pass').value;
+  const hash=await sha256Hex(p);
+  if(hash===ADMIN_PASS_HASH){
+    localStorage.removeItem(LOGIN_ATTEMPTS_KEY);
+    localStorage.removeItem(LOGIN_LOCK_KEY);
+    sessionStorage.setItem(SESSION_KEY, String(Date.now()));
+    showAdminDashboard();
+  }else{
+    const attempts=Number(localStorage.getItem(LOGIN_ATTEMPTS_KEY)||0)+1;
+    localStorage.setItem(LOGIN_ATTEMPTS_KEY, String(attempts));
+    const errEl=document.getElementById('login-error');
+    if(attempts>=MAX_ATTEMPTS){
+      localStorage.setItem(LOGIN_LOCK_KEY, String(Date.now()+LOCK_DURATION_MS));
+      localStorage.removeItem(LOGIN_ATTEMPTS_KEY);
+      updateLockUI();
+    }else{
+      errEl.style.display='block';
+      errEl.textContent=`Incorrect password. ${MAX_ATTEMPTS-attempts} attempt(s) remaining.`;
+    }
+  }
+}
+
+function showAdminDashboard(){
+  document.getElementById('admin-login').style.display='none';
+  document.getElementById('admin-dashboard').style.display='block';
+  renderAdminItems();renderAdminEnquiries();renderAdminSiteImages();
+  startSessionTimer();
+}
+
+function startSessionTimer(){
+  if(sessionTimerInterval) clearInterval(sessionTimerInterval);
+  sessionTimerInterval=setInterval(()=>{
+    const sessionStart=Number(sessionStorage.getItem(SESSION_KEY)||0);
+    const remaining=SESSION_TIMEOUT_MS-(Date.now()-sessionStart);
+    const timerEl=document.getElementById('session-timer');
+    if(remaining<=0){
+      clearInterval(sessionTimerInterval);
+      sessionStorage.removeItem(SESSION_KEY);
+      alert('Your admin session has expired for security. Please log in again.');
+      closeAdmin();
+      return;
+    }
+    if(timerEl){
+      const m=Math.floor(remaining/60000), s=Math.floor((remaining%60000)/1000);
+      timerEl.textContent=`Session active — auto-lock in ${m}:${s.toString().padStart(2,'0')}`;
+    }
+  },1000);
+}
+
+// Refresh session timer on user activity within the admin panel
+document.addEventListener('click',e=>{
+  if(document.getElementById('admin-dashboard').style.display==='block' && document.getElementById('admin-dashboard').contains(e.target)){
+    sessionStorage.setItem(SESSION_KEY, String(Date.now()));
+  }
+});
+
+function closeAdmin(){
+  document.getElementById('admin-panel').style.display='none';
+  document.body.style.overflow='';
+  if(sessionTimerInterval) clearInterval(sessionTimerInterval);
+}
+function switchAdminTab(tab,btn){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('admin-'+tab).classList.add('active');
+  if(tab==='manage')renderAdminItems();
+  if(tab==='enquiries')renderAdminEnquiries();
+  if(tab==='siteimages')renderAdminSiteImages();
+}
+
+function previewImage(input){
+  if(input.files&&input.files[0]){
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const prev=document.getElementById('img-preview');
+      prev.src=e.target.result;prev.style.display='block';
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function addJewellery(){
+  const name=document.getElementById('up-name').value.trim();
+  const cat=document.getElementById('up-cat').value;
+  const priceRaw=document.getElementById('up-price').value.trim();
+  const badge=document.getElementById('up-badge').value;
+  const imgFile=document.getElementById('img-file');
+  const preview=document.getElementById('img-preview');
+  if(!name||!priceRaw){showUploadMsg('Please fill name and price.','#f87171');return;}
+  const priceNum=Number(priceRaw);
+  if(isNaN(priceNum)||priceNum<=0){showUploadMsg('Please enter a valid positive price.','#f87171');return;}
+  const price=priceNum.toLocaleString('en-IN');
+  const imgSrc=preview.style.display!=='none'&&preview.src?preview.src:'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80';
+  const items=getItems();
+  items.push({id:Date.now(),name,cat,price,badge,img:imgSrc});
+  saveItems(items);
+  renderGrid(currentFilter);
+  showUploadMsg(`✓ "${name}" added successfully!`,'var(--gold)');
+  document.getElementById('up-name').value='';document.getElementById('up-price').value='';
+  document.getElementById('up-badge').value='';preview.style.display='none';imgFile.value='';
+}
+function showUploadMsg(t,c){
+  const m=document.getElementById('upload-msg');m.style.display='block';m.style.color=c;m.textContent=t;
+  setTimeout(()=>{m.style.display='none';},3000);
+}
+
+function renderAdminItems(){
+  const items=getItems();
+  const grid=document.getElementById('admin-grid-items');
+  if(!items.length){grid.innerHTML='<p style="color:var(--cream-dim);">No items yet.</p>';return;}
+  grid.innerHTML=items.map(item=>`
+    <div class="admin-item">
+      <img src="${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}">
+      <div class="admin-item-info">
+        <div class="name">${escapeHtml(item.name)}</div>
+        <div class="cat">${escapeHtml(item.cat.toUpperCase())}${item.badge?' · '+escapeHtml(item.badge):''}</div>
+        <div class="price">₹ ${escapeHtml(item.price)}</div>
+      </div>
+      <div class="admin-item-actions">
+        <button class="edit-btn" onclick="openEditModal(${item.id})">EDIT</button>
+        <button class="del-btn" onclick="deleteItem(${item.id})">DELETE</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function deleteItem(id){
+  if(!confirm('Delete this item?'))return;
+  const items=getItems().filter(i=>i.id!==id);
+  saveItems(items);renderAdminItems();renderGrid(currentFilter);
+}
+
+// ===========================
+// EDIT ITEM MODAL
+// ===========================
+let editingItemId=null;
+function openEditModal(id){
+  const item=getItems().find(i=>i.id===id);
+  if(!item)return;
+  editingItemId=id;
+  document.getElementById('edit-name').value=item.name;
+  document.getElementById('edit-cat').value=item.cat;
+  document.getElementById('edit-price').value=String(item.price).replace(/,/g,'');
+  document.getElementById('edit-badge').value=item.badge||'';
+  const prev=document.getElementById('edit-img-preview');
+  prev.src=item.img;prev.style.display='block';
+  document.getElementById('edit-img-file').value='';
+  document.getElementById('edit-modal').classList.add('open');
+}
+function closeEditModal(){
+  document.getElementById('edit-modal').classList.remove('open');
+  editingItemId=null;
+}
+function previewEditImage(input){
+  if(input.files&&input.files[0]){
+    const reader=new FileReader();
+    reader.onload=e=>{document.getElementById('edit-img-preview').src=e.target.result;};
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+function saveEditItem(){
+  if(editingItemId===null)return;
+  const items=getItems();
+  const idx=items.findIndex(i=>i.id===editingItemId);
+  if(idx===-1)return;
+  const name=document.getElementById('edit-name').value.trim();
+  const priceRaw=document.getElementById('edit-price').value.trim();
+  if(!name||!priceRaw){alert('Please fill in name and price.');return;}
+  items[idx].name=name;
+  items[idx].cat=document.getElementById('edit-cat').value;
+  items[idx].price=Number(priceRaw).toLocaleString('en-IN');
+  items[idx].badge=document.getElementById('edit-badge').value;
+  items[idx].img=document.getElementById('edit-img-preview').src;
+  saveItems(items);
+  renderAdminItems();renderGrid(currentFilter);closeEditModal();
+}
+
+// ===========================
+// SITE IMAGES ADMIN
+// ===========================
+function renderAdminSiteImages(){
+  const imgs=getSiteImages();
+  const grid=document.getElementById('admin-site-images');
+  grid.innerHTML=Object.keys(siteImageLabels).map(key=>{
+    const src=imgs[key] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80';
+    return `
+    <div class="site-img-card">
+      <img src="${escapeHtml(src)}" alt="${escapeHtml(siteImageLabels[key])}">
+      <div class="lbl">
+        <span>${escapeHtml(siteImageLabels[key])}</span>
+        <div class="upload-mini">
+          <button class="upload-mini-btn">CHANGE IMAGE</button>
+          <input type="file" accept="image/*" onchange="changeSiteImage('${key}', this)">
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function changeSiteImage(key, input){
+  if(!(input.files && input.files[0]))return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const imgs=getSiteImages();
+    imgs[key]=e.target.result;
+    saveSiteImages(imgs);
+    applySiteImages();
+    renderAdminSiteImages();
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function renderAdminEnquiries(){
+  const enqs=getEnquiries();
+  const list=document.getElementById('admin-enquiry-list');
+  if(!enqs.length){list.innerHTML='<p style="color:var(--cream-dim);font-size:14px;">No enquiries yet.</p>';return;}
+  list.innerHTML=enqs.map(e=>`
+    <div class="enquiry-card">
+      <div>
+        <h4>${escapeHtml(e.name)}</h4>
+        <p>📞 ${escapeHtml(e.phone)}${e.email?' · ✉ '+escapeHtml(e.email):''}</p>
+        <p>Item: <strong style="color:var(--gold)">${escapeHtml(e.item)}</strong></p>
+        ${e.message?`<p style="margin-top:6px;font-style:italic;">${escapeHtml(e.message)}</p>`:''}
+      </div>
+      <div class="enquiry-date">${escapeHtml(e.date)}</div>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// NAV & SCROLL
+// ===========================
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+}
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('main-nav');
+  nav.style.padding=window.scrollY>50?'12px 60px':'18px 60px';
+});
+
+// Intersection Observer for fade-in
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// ===========================
+// HERO SPARKLES
+// ===========================
+function createSparkles(){
+  const container=document.getElementById('sparkle-container');
+  if(!container)return;
+  const count=window.innerWidth<700?16:30;
+  for(let i=0;i<count;i++){
+    const s=document.createElement('div');
+    s.className='sparkle';
+    s.style.left=Math.random()*100+'%';
+    s.style.top=(40+Math.random()*60)+'%';
+    s.style.animationDuration=(Math.random()*6+5)+'s';
+    s.style.animationDelay=(Math.random()*6)+'s';
+    container.appendChild(s);
+  }
+}
+
+// ===========================
+// STAT COUNTER ANIMATION
+// ===========================
+function animateCounters(){
+  document.querySelectorAll('.stat-num').forEach(el=>{
+    const text=el.textContent.trim();
+    const match=text.match(/^(\d+)(.*)$/);
+    if(!match)return; // skip non-numeric stats (e.g. "BIS", "Darbhanga")
+    const target=parseInt(match[1],10);
+    const suffix=match[2];
+    let current=0;
+    const step=Math.max(1,Math.ceil(target/40));
+    const timer=setInterval(()=>{
+      current+=step;
+      if(current>=target){current=target;clearInterval(timer);}
+      el.textContent=current+suffix;
+    },35);
+  });
+}
+let countersAnimated=false;
+const statsObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !countersAnimated){
+      countersAnimated=true;
+      animateCounters();
+    }
+  });
+},{threshold:.4});
+const statsBarEl=document.querySelector('.stats-bar');
+if(statsBarEl)statsObserver.observe(statsBarEl);
+
+// ===========================
+// INIT
+// ===========================
+renderGrid('all');
+applySiteImages();
+createSparkles();
+</script>
+</body>
+</html>
